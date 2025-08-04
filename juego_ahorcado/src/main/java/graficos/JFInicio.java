@@ -37,9 +37,7 @@ public class JFInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jugar.setBackground(new java.awt.Color(255, 255, 255));
         jugar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jugar.setForeground(new java.awt.Color(0, 0, 0));
         jugar.setText("JUGAR");
         jugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,9 +45,7 @@ public class JFInicio extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("SALIR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,9 +53,7 @@ public class JFInicio extends javax.swing.JFrame {
             }
         });
 
-        cre.setBackground(new java.awt.Color(255, 255, 255));
         cre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        cre.setForeground(new java.awt.Color(0, 0, 0));
         cre.setText("CREDITOS");
         cre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +62,6 @@ public class JFInicio extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("EL AHORCADO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,6 +95,7 @@ public class JFInicio extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarActionPerformed

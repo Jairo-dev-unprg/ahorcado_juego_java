@@ -1,11 +1,11 @@
 package com.mycompany.juego_ahorcado;
 
-import graficos.JFPizarra;
+import logueo_registro.JFLogueo;
 
 public class Juego_ahorcado {
 
     public static void main(String[] args) {
-        JFPizarra frame = new JFPizarra();
+        JFLogueo frame = new JFLogueo();
         frame.setVisible(true);
     }
 }
