@@ -28,11 +28,12 @@ public class JFLogueo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("HANGMAN - INICIA SESION");
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtUser.setBackground(new java.awt.Color(228, 197, 151));
+        txtUser.setBackground(new java.awt.Color(218, 182, 126));
         txtUser.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtUser.setForeground(new java.awt.Color(51, 51, 51));
         txtUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -43,7 +44,7 @@ public class JFLogueo extends javax.swing.JFrame {
         });
         jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 300, 64));
 
-        txtPass.setBackground(new java.awt.Color(228, 197, 151));
+        txtPass.setBackground(new java.awt.Color(218, 182, 126));
         txtPass.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtPass.setForeground(new java.awt.Color(51, 51, 51));
         txtPass.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -54,7 +55,7 @@ public class JFLogueo extends javax.swing.JFrame {
         });
         jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 300, 64));
 
-        jButton1.setBackground(new java.awt.Color(235, 203, 156));
+        jButton1.setBackground(new java.awt.Color(218, 182, 126));
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
         jButton1.setForeground(new java.awt.Color(34, 33, 47));
         jButton1.setText("<html><div style='text-align: center;'>NUEVO<br>JUGADOR</div></html>");

@@ -5,6 +5,7 @@
 package graficos;
 
 import javax.swing.JOptionPane;
+import logueo_registro.JFLogueo;
 
 /**
  *
@@ -17,8 +18,7 @@ public class JFInicio extends javax.swing.JFrame {
      */
     public JFInicio() {
         initComponents();
-        
-        
+
     }
 
     /**
@@ -30,100 +30,82 @@ public class JFInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jugar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        cre = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btnJugar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        btnCreditos = new javax.swing.JButton();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("HANGMAN");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jugar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jugar.setText("JUGAR");
-        jugar.addActionListener(new java.awt.event.ActionListener() {
+        btnJugar.setBackground(new java.awt.Color(218, 182, 126));
+        btnJugar.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
+        btnJugar.setForeground(new java.awt.Color(34, 33, 47));
+        btnJugar.setText("JUGAR");
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jugarActionPerformed(evt);
+                btnJugarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 270, 64));
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jButton2.setText("SALIR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setBackground(new java.awt.Color(218, 182, 126));
+        btnSalir.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(34, 33, 47));
+        btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 270, 64));
 
-        cre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        cre.setText("CREDITOS");
-        cre.addActionListener(new java.awt.event.ActionListener() {
+        btnCreditos.setBackground(new java.awt.Color(218, 182, 126));
+        btnCreditos.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
+        btnCreditos.setForeground(new java.awt.Color(34, 33, 47));
+        btnCreditos.setText("CREDITOS");
+        btnCreditos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creActionPerformed(evt);
+                btnCreditosActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 270, 64));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel2.setText("EL AHORCADO");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel2)
-                .addGap(34, 34, 34)
-                .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(cre, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuInicio.png"))); // NOI18N
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarActionPerformed
-     JFPizarra frame = new JFPizarra();
-    frame.setVisible(true);         
-    frame.setLocationRelativeTo(null);
-     this.dispose();
-       
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
+        JFPizarra frame = new JFPizarra();
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        this.dispose();
 
-    }//GEN-LAST:event_jugarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         if (JOptionPane.showConfirmDialog(rootPane, "¿Salir de la aplicación?",
-            "Ahorcado", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION)
-    {System.exit(0);
-        }
-        else{
+                "Ahorcado", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION) 
+        {
+            JFLogueo frm = new JFLogueo();
+            frm.setVisible(true);
+            this.dispose();
+        } else {
             setDefaultCloseOperation(0);
         }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void creActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creActionPerformed
+    private void btnCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditosActionPerformed
 //        Icon g=new ImageIcon(getClass().getResource("/imagenes/univer.png"));
         //JOptionPane.showMessageDialog(null,"Juego creado por:\nEstudiante de la Universidad de Guayaquil.\n Carrera Infórmatica. \n Tercer semestre 3A1"
         //    + "\n\n Kevin.\n Renzo. \n Jorge.\n Justto.\n Jairo."
         //    , "Ahorcado",JOptionPane.INFORMATION_MESSAGE, g);
-    }//GEN-LAST:event_creActionPerformed
+    }//GEN-LAST:event_btnCreditosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,17 +138,15 @@ public class JFInicio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JFInicio().setVisible(true);
-                
-                
-              
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cre;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton jugar;
+    private javax.swing.JButton btnCreditos;
+    private javax.swing.JButton btnJugar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel lblFondo;
     // End of variables declaration//GEN-END:variables
 }
