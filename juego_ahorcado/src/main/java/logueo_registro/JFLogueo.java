@@ -1,6 +1,6 @@
 package logueo_registro;
 
-import graficos.JFInicio;
+import graficos.JFPizarra;
 
 public class JFLogueo extends javax.swing.JFrame {
 
@@ -20,18 +20,18 @@ public class JFLogueo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        background = new javax.swing.JPanel();
         txtUser = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("HANGMAN - INICIA SESION");
+        setTitle("HANGMAN - BIENVENIDO");
         setResizable(false);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUser.setBackground(new java.awt.Color(218, 182, 126));
         txtUser.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -42,7 +42,7 @@ public class JFLogueo extends javax.swing.JFrame {
                 txtUserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 300, 64));
+        background.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 300, 40));
 
         txtPass.setBackground(new java.awt.Color(218, 182, 126));
         txtPass.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -53,42 +53,47 @@ public class JFLogueo extends javax.swing.JFrame {
                 txtPassActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 300, 64));
+        background.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 300, 40));
 
-        jButton1.setBackground(new java.awt.Color(218, 182, 126));
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(34, 33, 47));
-        jButton1.setText("<html><div style='text-align: center;'>NUEVO<br>JUGADOR</div></html>");
-        jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setIconTextGap(0);
-        jButton1.setMargin(new java.awt.Insets(0, 14, 3, 14));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 140, 80));
-
-        jButton2.setBackground(new java.awt.Color(172, 77, 45));
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(233, 206, 161));
-        jButton2.setText("<html><div style='text-align: center;'>ENTRAR</div></html>");
-        jButton2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(218, 182, 126));
+        btnRegistrar.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(34, 33, 47));
+        btnRegistrar.setText("<html><div style='text-align: center;'>NUEVO<br>JUGADOR</div></html>");
+        btnRegistrar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        btnRegistrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRegistrar.setIconTextGap(0);
+        btnRegistrar.setMargin(new java.awt.Insets(0, 14, 3, 14));
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 130, 80));
+        background.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 140, 80));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/log.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        btnEntrar.setBackground(new java.awt.Color(172, 77, 45));
+        btnEntrar.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(233, 206, 161));
+        btnEntrar.setText("<html><div style='text-align: center;'>ENTRAR</div></html>");
+        btnEntrar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
+        background.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 130, 80));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login.png"))); // NOI18N
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -103,11 +108,17 @@ public class JFLogueo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JFInicio frm = new JFInicio();
-        frm.setVisible(true);
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        JFPizarra frame = new JFPizarra();
+        frame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //JFRegistro frame = new JFRegistro();
+        //frame.setVisible(true);
+        //this.dispose();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +156,10 @@ public class JFLogueo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel background;
+    private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
