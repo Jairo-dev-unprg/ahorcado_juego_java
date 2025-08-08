@@ -1,6 +1,7 @@
 package logueo_registro;
 
 import controlador.ControladorPrincipal;
+import servicio.ServicioAutenticacion;
 import javax.swing.JOptionPane;
 
 public class JFLogueo extends javax.swing.JFrame {
@@ -9,6 +10,14 @@ public class JFLogueo extends javax.swing.JFrame {
 
     public JFLogueo() {
         initComponents();
+        configurarVentana();
+    }
+    
+    private void configurarVentana() {
+        setTitle("Iniciar Sesión");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
     }
     
     /**
@@ -107,16 +116,20 @@ public class JFLogueo extends javax.swing.JFrame {
         String nombreUsuario = txtUser.getText().trim();
         String contrasena = new String(txtPass.getPassword());
         
-        String error = controlador.procesarLogin(nombreUsuario, contrasena);
-        
-        if (error != null) {
-            JOptionPane.showMessageDialog(this, error, "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
-            txtPass.setText("");
-            txtUser.requestFocus();
-        } else {
-            String tipoUsuario = controlador.esAdministrador() ? "Administrador" : "Usuario";
-            String nombreCompleto = controlador.getUsuarioActual().getNombreUsuario();
-            JOptionPane.showMessageDialog(this, "Bienvenido " + tipoUsuario + ": " + nombreCompleto, "Acceso Concedido", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            String error = controlador.procesarLogin(nombreUsuario, contrasena);
+            
+            if (error != null) {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
+                txtPass.setText("");
+                txtUser.requestFocus();
+            } else {
+                String tipoUsuario = controlador.esAdministrador() ? "Administrador" : "Usuario";
+                String nombreCompleto = controlador.getUsuarioActual().getNombreUsuario();
+                JOptionPane.showMessageDialog(this, "Bienvenido " + tipoUsuario + ": " + nombreCompleto, "Acceso Concedido", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error interno: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 

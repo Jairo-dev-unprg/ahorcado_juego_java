@@ -11,7 +11,6 @@ public class Juego_ahorcado {
 
         ControladorPrincipal controlador = new ControladorPrincipal();
         controlador.inicializar();
-        
         controlador.iniciarAplicacion();
     }
 }

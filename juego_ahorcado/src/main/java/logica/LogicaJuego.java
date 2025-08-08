@@ -1,8 +1,7 @@
 package logica;
 
 import graficos.PanelPizarra;
-import graficos.figuras.EstructuraAhorcado;
-import graficos.figuras.Palabras;
+// Clases consolidadas ahora están en JFPizarra
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
@@ -16,34 +15,51 @@ public class LogicaJuego {
     private int error2;
     private List<Character> letrasIngresadas;
     private List<Character> letrasFallidas;
-    private Palabras palabras;
-    private EstructuraAhorcado estructuraAhorcado;
+    private Object palabras;
+    private Object estructuraAhorcado;
     private JPanel panPizarra;
     private JTextField txtPalabra;
     private JTextField txtAyuda;
     
-    public LogicaJuego(EstructuraAhorcado estructuraAhorcado, JPanel panPizarra, 
+    public LogicaJuego(Object estructuraAhorcado, JPanel panPizarra, 
                        JTextField txtPalabra, JTextField txtAyuda) {
         this.estructuraAhorcado = estructuraAhorcado;
         this.panPizarra = panPizarra;
         this.txtPalabra = txtPalabra;
         this.txtAyuda = txtAyuda;
-        this.palabras = new Palabras();
+        this.palabras = null; // Se inicializará desde JFPizarra
         this.letrasIngresadas = new ArrayList<>();
         this.letrasFallidas = new ArrayList<>();
     }
     
+    public void setPalabras(Object palabras) {
+        this.palabras = palabras;
+    }
+    
     public void iniciarJuego() {
-        palabraSeleccionada = palabras.obtenerPalabraAleatoria();
+        if (palabras != null) {
+            try {
+                java.lang.reflect.Method obtenerPalabraAleatoriaMethod = palabras.getClass().getMethod("obtenerPalabraAleatoria");
+                palabraSeleccionada = (String) obtenerPalabraAleatoriaMethod.invoke(palabras);
+            } catch (Exception e) {
+                palabraSeleccionada = "ERROR";
+            }
+        } else {
+            palabraSeleccionada = "ERROR";
+        }
         error1 = 0;
         error2 = 6;
         
         ((PanelPizarra) panPizarra).getFiguras().clear();
         
-        if (estructuraAhorcado == null) {
-            estructuraAhorcado = new EstructuraAhorcado();
+        if (estructuraAhorcado != null) {
+            try {
+                java.lang.reflect.Method resetMethod = estructuraAhorcado.getClass().getMethod("reset");
+                resetMethod.invoke(estructuraAhorcado);
+            } catch (Exception e) {
+                // Ignorar si el método no existe
+            }
         }
-        estructuraAhorcado.reset();
         ((PanelPizarra) panPizarra).getFiguras().add(estructuraAhorcado);
         
         panPizarra.repaint();
@@ -73,7 +89,18 @@ public class LogicaJuego {
         actualizarVisualizacionPalabra();
         letrasFallidas.clear();
         letrasIngresadas.clear();
-        txtAyuda.setText(palabras.obtenerPista(palabraSeleccionada));
+        
+        if (palabras != null) {
+            try {
+                java.lang.reflect.Method obtenerPistaMethod = palabras.getClass().getMethod("obtenerPista", String.class);
+                String pista = (String) obtenerPistaMethod.invoke(palabras, palabraSeleccionada);
+                txtAyuda.setText(pista);
+            } catch (Exception e) {
+                txtAyuda.setText("No hay pista disponible.");
+            }
+        } else {
+            txtAyuda.setText("No hay pista disponible.");
+        }
     }
     
     public boolean procesarLetra(char letra) {
@@ -123,7 +150,14 @@ public class LogicaJuego {
     }
     
     private void actualizarEstructuraAhorcado() {
-        estructuraAhorcado.setErrores(error1);
+        if (estructuraAhorcado != null) {
+            try {
+                java.lang.reflect.Method setErroresMethod = estructuraAhorcado.getClass().getMethod("setErrores", int.class);
+                setErroresMethod.invoke(estructuraAhorcado, error1);
+            } catch (Exception e) {
+                // Ignorar si el método no existe
+            }
+        }
         panPizarra.repaint();
     }
     
@@ -154,7 +188,12 @@ public class LogicaJuego {
     
     public String obtenerPista() {
         if (palabraSeleccionada != null && palabras != null) {
-            return palabras.obtenerPista(palabraSeleccionada);
+            try {
+                java.lang.reflect.Method obtenerPistaMethod = palabras.getClass().getMethod("obtenerPista", String.class);
+                return (String) obtenerPistaMethod.invoke(palabras, palabraSeleccionada);
+            } catch (Exception e) {
+                return "No hay pista disponible.";
+            }
         }
         return "No hay pista disponible";
     }

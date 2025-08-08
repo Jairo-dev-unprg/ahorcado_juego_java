@@ -1,19 +1,19 @@
 package graficos;
 
-import graficos.figuras.EstructuraAhorcado;
-import graficos.figuras.Figura;
-import graficos.figuras.Palabras;
-import graficos.configuracion.ConfiguradorLookAndFeel;
-import graficos.inicializacion.InicializadorPizarra;
-import graficos.inicializacion.InicializadorPalabras;
-import graficos.teclado.GestorTeclado;
+// Clases consolidadas del paquete figuras
+// Clase GestorTeclado consolidada
 import logica.LogicaJuego;
+import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import controlador.ControladorPrincipal;
+import graficos.GestorFiguras.Figura;
+import graficos.GestorFiguras.EstructuraAhorcado;
 
 public class JFPizarra extends javax.swing.JFrame {
 
@@ -29,17 +29,30 @@ public class JFPizarra extends javax.swing.JFrame {
     public String res[];
     private GestorTeclado gestorTeclado;
     private LogicaJuego logicaJuego;
+    private Palabras palabras;
 
     public JFPizarra() {
-        ConfiguradorLookAndFeel.configurar();
+        configurarLookAndFeel();
         initComponents();
+        configurarVentana();
+        configurarRedimensionamiento();
+        inicializarComponentes();
+    }
+    
+    private void configurarVentana() {
+        setTitle("Juego del Ahorcado");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(true);
+        setLocationRelativeTo(null);
     }
     
     public void inicializarComponentes() {
-        estructuraAhorcado = InicializadorPizarra.inicializar(panPizarra);
-        palabraSeleccionada = InicializadorPalabras.inicializar(txtAyuda);
+        estructuraAhorcado = inicializarPizarra();
+        palabras = new Palabras();
         inicializarTeclado();
         logicaJuego = new LogicaJuego(estructuraAhorcado, panPizarra, txtPalabra, txtAyuda);
+        logicaJuego.setPalabras(palabras);
+        actualizarTamanoComponentes();
     }
 
     /**
@@ -465,8 +478,12 @@ public class JFPizarra extends javax.swing.JFrame {
 
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
-        if (JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de querer una palabra nueva?",
-                "Ahorcado", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION) {
+        int opcion = JOptionPane.showConfirmDialog(this, 
+            "¿Está seguro de que desea iniciar un nuevo juego?", 
+            "Nuevo Juego", 
+            JOptionPane.YES_NO_OPTION, 
+            JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
             iniciar();
         } else {
             setDefaultCloseOperation(0);
@@ -475,26 +492,22 @@ public class JFPizarra extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         if (controlador == null) {
-            JOptionPane.showMessageDialog(this, "Error interno: Controlador no inicializado.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Controlador no inicializado", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        int respuesta = JOptionPane.showConfirmDialog(
-                this,
-                "¿Está seguro de que desea salir del juego?",
-                "Confirmar salida",
-                JOptionPane.YES_NO_OPTION
-        );
-
-        if (respuesta == JOptionPane.YES_OPTION) {
-
+        int opcion = JOptionPane.showConfirmDialog(this, 
+            "¿Está seguro de que desea salir del juego?", 
+            "Confirmar Salida", 
+            JOptionPane.YES_NO_OPTION, 
+            JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
             controlador.cerrarSesion();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
-        JOptionPane.showMessageDialog(null,
-                "<html>"
+        String instrucciones = "<html>"
                 + "<h2 style='text-align:center;'>🎮 Instrucciones del Ahorcado</h2>"
                 + "<p><b>👥 Jugadores:</b> 2 (1 adivinador y 1 moderador)</p>"
                 + "<p><b>🎯 Objetivo:</b> Descubrir la palabra o frase incógnita.</p>"
@@ -519,8 +532,8 @@ public class JFPizarra extends javax.swing.JFrame {
                 + "<p><b>🏁 Fin del juego:</b><br>"
                 + "🏆 <b>GANA</b> si descubre la palabra o frase secreta.<br>"
                 + "💀 <b>PIERDE</b> si se completa el dibujo del muñeco.</p>"
-                + "</html>",
-                "Ahorcado - Instrucciones", JOptionPane.PLAIN_MESSAGE);
+                + "</html>";
+        JOptionPane.showMessageDialog(null, instrucciones, "Ahorcado - Instrucciones", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_helpActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
@@ -621,7 +634,9 @@ public class JFPizarra extends javax.swing.JFrame {
     private void iniciar() {
         if (logicaJuego == null) {
             logicaJuego = new LogicaJuego(estructuraAhorcado, panPizarra, txtPalabra, txtAyuda);
+            logicaJuego.setPalabras(palabras);
         }
+        
         logicaJuego.iniciarJuego();
         gestorTeclado.configurarBotonesIniciales();
         letrasIngresadas.clear();
@@ -638,6 +653,42 @@ public class JFPizarra extends javax.swing.JFrame {
         
         gestorTeclado = new GestorTeclado(btns, this::procesarLetra);
         gestorTeclado.inicializar();
+    }
+    
+    private void configurarRedimensionamiento() {
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                actualizarTamanoComponentes();
+                if (estructuraAhorcado != null) {
+                    estructuraAhorcado.actualizarEscala(panPizarra.getWidth(), panPizarra.getHeight());
+                    panPizarra.repaint();
+                }
+            }
+        });
+    }
+    
+    private void actualizarTamanoComponentes() {
+        // Actualizar tamaño de fuente del teclado basado en el tamaño de la ventana
+        int anchoVentana = this.getWidth();
+        int altoVentana = this.getHeight();
+        
+        if (anchoVentana > 0 && altoVentana > 0) {
+            // Calcular tamaño de fuente proporcional
+            int tamanoFuente = Math.max(12, Math.min(24, anchoVentana / 50));
+            Font fuenteTeclado = new Font("Dialog", Font.BOLD, tamanoFuente);
+            
+            // Aplicar fuente a todos los botones del teclado
+            for (JButton btn : btns) {
+                if (btn != null) {
+                    btn.setFont(fuenteTeclado);
+                }
+            }
+            
+            // Actualizar tamaño de fuente de la palabra
+            int tamanoFuentePalabra = Math.max(18, Math.min(36, anchoVentana / 40));
+            txtPalabra.setFont(new Font("Dialog", Font.PLAIN, tamanoFuentePalabra));
+        }
     }
 
 
@@ -661,19 +712,242 @@ public class JFPizarra extends javax.swing.JFrame {
         boolean letraCorrecta = logicaJuego.procesarLetra(letra);
         
         if (letraCorrecta) {
-            gestorTeclado.configurarBoton(botonPresionado, Color.GREEN, Color.WHITE, false);
+            gestorTeclado.marcarLetraCorrecta(botonPresionado);
         } else {
-            gestorTeclado.configurarBoton(botonPresionado, Color.RED, Color.WHITE, false);
+            gestorTeclado.marcarLetraIncorrecta(botonPresionado);
         }
 
         if (logicaJuego.juegoPerdido()) {
-            JOptionPane.showMessageDialog(this, "¡Perdiste! La palabra era: " + logicaJuego.getPalabraSeleccionada());
+            JOptionPane.showMessageDialog(this, "¡Has perdido! La palabra era: " + logicaJuego.getPalabraSeleccionada(), "Derrota", JOptionPane.INFORMATION_MESSAGE);
             gestorTeclado.deshabilitarTodos();
         } else if (logicaJuego.juegoGanado()) {
-            JOptionPane.showMessageDialog(this, "¡Felicidades! ¡Ganaste!");
+            JOptionPane.showMessageDialog(this, "¡Felicitaciones! Has ganado el juego.", "Victoria", JOptionPane.INFORMATION_MESSAGE);
             gestorTeclado.deshabilitarTodos();
         }
     }
+    
+    // Métodos consolidados de las clases auxiliares eliminadas
+    
+    private void configurarLookAndFeel() {
+        try {
+            javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        } catch (Exception e) {
+            // Ignorar errores de Look and Feel
+        }
+    }
+    
+    private EstructuraAhorcado inicializarPizarra() {
+        ((PanelPizarra) panPizarra).setFiguras(new ArrayList<>());
+        EstructuraAhorcado estructuraAhorcado = new EstructuraAhorcado();
+        ((PanelPizarra) panPizarra).getFiguras().add(estructuraAhorcado);
+        panPizarra.repaint();
+        return estructuraAhorcado;
+    }
+    
+    private String inicializarPalabras() {
+        String palabraSeleccionada = palabras.obtenerPalabraAleatoria();
+        txtAyuda.setText(palabras.obtenerPista(palabraSeleccionada));
+        return palabraSeleccionada;
+    }
+    
+    // Clases consolidadas del paquete figuras
+    
 
+    
+    // Clase Palabras consolidada
+    public class Palabras {
+        private java.util.List<String> listaPalabras;
+        private java.util.Map<String, String> pistas;
+        private persistencia.GestorPalabrasXML gestorPalabras;
+
+        public Palabras() {
+            listaPalabras = new java.util.ArrayList<>();
+            pistas = new java.util.HashMap<>();
+            gestorPalabras = new persistencia.GestorPalabrasXML();
+            cargarPalabras();
+        }
+
+        private void cargarPalabras() {
+            java.util.List<modelo.Palabra> palabrasXML = gestorPalabras.cargarPalabras();
+            
+            if (palabrasXML != null) {
+                for (modelo.Palabra palabra : palabrasXML) {
+                    String palabraUpper = palabra.getPalabra().toUpperCase();
+                    listaPalabras.add(palabraUpper);
+                    pistas.put(palabraUpper, palabra.getPista());
+                }
+            }
+        }
+
+        public String obtenerPalabraAleatoria() {
+            if (listaPalabras.isEmpty()) {
+                return "ERROR";
+            }
+            
+            java.util.Random rand = new java.util.Random();
+            int indice = rand.nextInt(listaPalabras.size());
+            String palabraSeleccionada = listaPalabras.get(indice);
+            
+            return palabraSeleccionada;
+        }
+
+        public String obtenerPista(String palabraSeleccionada) {
+            String pista = pistas.get(palabraSeleccionada);
+            
+            if (pista != null) {
+                return pista;
+            } else {
+                return "No hay pista disponible para esta palabra.";
+            }
+        }
+     }
+     
+     // Clase GestorTeclado consolidada
+     private class GestorTeclado {
+         
+         private JButton[] btns;
+         private TecladoListener listener;
+         private boolean inicializado = false;
+         
+         // Estados del teclado
+         public enum EstadoTeclado {
+             INICIAL,
+             DESHABILITADO,
+             JUGANDO
+         }
+         
+         // Colores predefinidos
+         private static final Color COLOR_INICIAL = new Color(240, 240, 240);
+         private static final Color COLOR_DESHABILITADO = new Color(200, 200, 200);
+         private static final Color COLOR_CORRECTO = Color.GREEN;
+         private static final Color COLOR_INCORRECTO = Color.RED;
+         private static final Color TEXTO_INICIAL = Color.BLACK;
+         private static final Color TEXTO_DESHABILITADO = new Color(120, 120, 120);
+         private static final Color TEXTO_BOTON_USADO = Color.WHITE;
+         
+         public interface TecladoListener {
+             void onLetraPresionada(char letra);
+         }
+         
+         public GestorTeclado(JButton[] botones, TecladoListener listener) {
+             this.btns = botones;
+             this.listener = listener;
+         }
+         
+         public void inicializar() {
+             if (!inicializado) {
+                 asignarListeners();
+                 inicializado = true;
+             }
+             cambiarEstado(EstadoTeclado.DESHABILITADO);
+         }
+         
+         public boolean estaInicializado() {
+             return inicializado;
+         }
+         
+         public void cambiarEstado(EstadoTeclado estado) {
+             switch (estado) {
+                 case INICIAL:
+                     configurarBotonesIniciales();
+                     break;
+                 case DESHABILITADO:
+                     configurarBotonesDesactivados();
+                     break;
+                 case JUGANDO:
+                     for (JButton btn : btns) {
+                         if (btn != null) {
+                             configurarBoton(btn, COLOR_INICIAL, TEXTO_INICIAL, true);
+                         }
+                     }
+                     break;
+             }
+         }
+         
+         public void configurarBotonesIniciales() {
+             for (JButton btn : btns) {
+                 if (btn != null) {
+                     configurarBoton(btn, COLOR_INICIAL, TEXTO_INICIAL, true);
+                 }
+             }
+         }
+         
+         public void configurarBotonesDesactivados() {
+             for (JButton btn : btns) {
+                 if (btn != null) {
+                     configurarBoton(btn, COLOR_DESHABILITADO, TEXTO_DESHABILITADO, false);
+                 }
+             }
+         }
+         
+         private void asignarListeners() {
+             for (JButton btn : btns) {
+                 if (btn != null) {
+                     btn.addActionListener(e -> {
+                         if (listener != null && btn.isEnabled()) {
+                             String texto = btn.getText();
+                             if (!texto.isEmpty()) {
+                                 char letra = texto.charAt(0);
+                                 listener.onLetraPresionada(letra);
+                             }
+                         }
+                     });
+                 }
+             }
+         }
+         
+         public void resetear() {
+             limpiarListeners();
+             inicializado = false;
+             inicializar();
+         }
+         
+         private void limpiarListeners() {
+             for (JButton btn : btns) {
+                 if (btn != null) {
+                     java.awt.event.ActionListener[] listeners = btn.getActionListeners();
+                     for (java.awt.event.ActionListener listener : listeners) {
+                         btn.removeActionListener(listener);
+                     }
+                 }
+             }
+         }
+         
+         public void configurarBoton(JButton boton, Color colorFondo, Color colorTexto, boolean habilitado) {
+             if (boton != null) {
+                 boton.setBackground(colorFondo);
+                 boton.setForeground(colorTexto);
+                 boton.setEnabled(habilitado);
+                 boton.setOpaque(true);
+                 boton.setBorderPainted(true);
+                 boton.setFocusPainted(false);
+                 boton.repaint();
+             }
+         }
+         
+         public void marcarLetraCorrecta(JButton boton) {
+             if (boton != null) {
+                 configurarBoton(boton, COLOR_CORRECTO, TEXTO_BOTON_USADO, false);
+             }
+         }
+         
+         public void marcarLetraIncorrecta(JButton boton) {
+             if (boton != null) {
+                 configurarBoton(boton, COLOR_INCORRECTO, TEXTO_BOTON_USADO, false);
+             }
+         }
+         
+         public void deshabilitarTodos() {
+             for (JButton btn : btns) {
+                 if (btn != null) {
+                     configurarBoton(btn, COLOR_DESHABILITADO, TEXTO_DESHABILITADO, false);
+                 }
+             }
+         }
+         
+         public boolean isInicializado() {
+             return inicializado;
+         }
+     }
 
 }

@@ -9,6 +9,14 @@ public class JFRegistro extends javax.swing.JFrame {
 
     public JFRegistro() {
         initComponents();
+        configurarVentana();
+    }
+    
+    private void configurarVentana() {
+        setTitle("Registro");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
     }
     
     /**
@@ -124,18 +132,22 @@ public class JFRegistro extends javax.swing.JFrame {
         String contrasena = new String(txtPass.getPassword());
         String confirmarContrasena = new String(txtPassConfirm.getPassword());
         
-        String error = controlador.procesarRegistro(nombreUsuario, contrasena, confirmarContrasena);
-        
-        if (error != null) {
-            JOptionPane.showMessageDialog(this, error, "Error de Registro", JOptionPane.ERROR_MESSAGE);
-            if (error.contains("contraseñas no coinciden")) {
-                txtPassConfirm.setText("");
-                txtPassConfirm.requestFocus();
-            } else if (error.contains("usuario ya existe")) {
-                txtUser.requestFocus();
+        try {
+            String error = controlador.procesarRegistro(nombreUsuario, contrasena, confirmarContrasena);
+            
+            if (error != null) {
+                JOptionPane.showMessageDialog(this, error, "Error de Registro", JOptionPane.ERROR_MESSAGE);
+                if (error.contains("contraseñas no coinciden")) {
+                    txtPassConfirm.setText("");
+                    txtPassConfirm.requestFocus();
+                } else if (error.contains("usuario ya existe")) {
+                    txtUser.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error interno: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 

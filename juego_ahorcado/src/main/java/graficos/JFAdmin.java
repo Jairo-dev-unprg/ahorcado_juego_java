@@ -9,26 +9,30 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.util.List;
 import controlador.ControladorPrincipal;
-import graficos.admin.GestorPalabrasUI;
-import graficos.admin.ConfiguradorInterfazAdmin;
 
 public class JFAdmin extends javax.swing.JFrame {
 
     private ControladorPrincipal controlador;
-    private GestorPalabrasUI gestorPalabrasUI;
+    private GestorPalabrasXML gestorPalabras;
+    private PalabrasTableModel modeloTabla = new PalabrasTableModel();
+    private boolean modoEdicion;
+    private int filaSeleccionada;
 
     public JFAdmin() {
         initComponents();
+        inicializarComponentes();
     }
-    
+
     public void inicializarComponentes() {
-        ConfiguradorInterfazAdmin.configurarVentana(this);
-        gestorPalabrasUI = new GestorPalabrasUI(tblPalabras, txtPalabra, txtPistas);
+        this.modoEdicion = false;
+        this.filaSeleccionada = -1;
+        inicializarGestorPalabras();
         habilitarPanelGestion(false);
     }
-    
+
     /**
      * Establece el controlador principal
+     *
      * @param controlador controlador principal de la aplicación
      */
     public void setControlador(ControladorPrincipal controlador) {
@@ -65,17 +69,7 @@ public class JFAdmin extends javax.swing.JFrame {
 
         panPalabras.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PALABRAS EXISTENTES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
-        tblPalabras.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        tblPalabras.setModel(this.modeloTabla);
         jScrollPane1.setViewportView(tblPalabras);
 
         btnActualizar.setBackground(new java.awt.Color(128, 128, 128));
@@ -105,7 +99,7 @@ public class JFAdmin extends javax.swing.JFrame {
             .addGroup(panPalabrasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panPalabrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panPalabrasLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnActualizar)
@@ -169,7 +163,7 @@ public class JFAdmin extends javax.swing.JFrame {
                             .addComponent(txtPistas)
                             .addComponent(txtPalabra)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panGestionarLayout.createSequentialGroup()
-                        .addContainerGap(331, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar)))
@@ -242,7 +236,7 @@ public class JFAdmin extends javax.swing.JFrame {
                 .addComponent(btnSalir))
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +248,7 @@ public class JFAdmin extends javax.swing.JFrame {
                         .addComponent(lblTitulo))
                     .addComponent(btnSalir))
                 .addGap(6, 6, 6)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -262,38 +256,41 @@ public class JFAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        if (controlador == null) {
-            JOptionPane.showMessageDialog(this, "Error interno: Controlador no inicializado.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+        try {
+            if (controlador != null) {
+                controlador.cerrarSesion();
+            } else {
+                System.exit(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cerrar sesión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        controlador.cerrarSesion();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         habilitarPanelGestion(true);
-        gestorPalabrasUI.setModoEdicion(true);
+        modoEdicion = true;
         txtPalabra.requestFocus();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        gestorPalabrasUI.cargarDatos();
+        cargarDatos();
         JOptionPane.showMessageDialog(this, "Datos actualizados correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (gestorPalabrasUI.isModoEdicion()) {
-            gestorPalabrasUI.actualizarPalabra();
+        if (modoEdicion) {
+            actualizarPalabra();
         } else {
-            gestorPalabrasUI.agregarPalabra();
+            agregarPalabra();
         }
         btnCancelarActionPerformed(null);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        gestorPalabrasUI.limpiarCampos();
+        limpiarCamposGestor();
         habilitarPanelGestion(false);
-        gestorPalabrasUI.resetearModo();
+        resetearModo();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
@@ -331,8 +328,6 @@ public class JFAdmin extends javax.swing.JFrame {
         });
     }
 
-
-
     private void habilitarPanelGestion(boolean habilitar) {
         panGestionar.setEnabled(habilitar);
         txtPalabra.setEnabled(habilitar);
@@ -350,6 +345,127 @@ public class JFAdmin extends javax.swing.JFrame {
     private void limpiarCampos() {
         txtPalabra.setText("");
         txtPistas.setText("");
+    }
+
+    // Métodos consolidados de GestorPalabrasUI
+    private void inicializarGestorPalabras() {
+        gestorPalabras = new GestorPalabrasXML();
+        configurarSeleccion();
+    }
+
+    private void configurarSeleccion() {
+        tblPalabras.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int filaSeleccionada = tblPalabras.getSelectedRow();
+                    if (filaSeleccionada >= 0) {
+                        Palabra palabra = modeloTabla.getPalabraAt(filaSeleccionada);
+                        txtPalabra.setText(palabra.getPalabra());
+                        txtPistas.setText(palabra.getPista());
+                    }
+                }
+            }
+        });
+    }
+
+    private void cargarDatos() {
+        modeloTabla.recargar();
+    }
+
+    private boolean validarCampos() {
+        if (txtPalabra.getText().trim().isEmpty()) {
+            mostrarMensajeError("La palabra no puede estar vacía");
+            return false;
+        }
+
+        if (txtPistas.getText().trim().isEmpty()) {
+            mostrarMensajeError("La pista no puede estar vacía");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void agregarPalabra() {
+        if (!validarCampos()) {
+            return;
+        }
+
+        try {
+            gestorPalabras.agregarPalabra(txtPalabra.getText().trim(), txtPistas.getText().trim());
+            cargarDatos();
+            limpiarCamposGestor();
+            mostrarMensajeExito("Palabra agregada exitosamente");
+        } catch (Exception e) {
+            mostrarMensajeError("Error al agregar la palabra");
+        }
+    }
+
+    private void actualizarPalabra() {
+        if (!modoEdicion || filaSeleccionada < 0) {
+            mostrarMensajeError("Debe seleccionar una palabra para actualizar");
+            return;
+        }
+
+        if (!validarCampos()) {
+            return;
+        }
+
+        Palabra palabraOriginal = modeloTabla.getPalabraAt(filaSeleccionada);
+
+        if (gestorPalabras.actualizarPalabra(palabraOriginal.getPalabra(), txtPalabra.getText().trim(), txtPistas.getText().trim())) {
+            cargarDatos();
+            resetearModo();
+            mostrarMensajeExito("Palabra actualizada exitosamente");
+        } else {
+            mostrarMensajeError("Error al actualizar la palabra");
+        }
+    }
+
+    private void eliminarPalabra() {
+        int filaSeleccionada = tblPalabras.getSelectedRow();
+        if (filaSeleccionada < 0) {
+            mostrarMensajeError("Debe seleccionar una palabra para eliminar");
+            return;
+        }
+
+        if (confirmarAccion("¿Está seguro de que desea eliminar esta palabra?")) {
+            Palabra palabra = modeloTabla.getPalabraAt(filaSeleccionada);
+
+            if (gestorPalabras.eliminarPalabra(palabra.getPalabra())) {
+                cargarDatos();
+                limpiarCamposGestor();
+                resetearModo();
+                mostrarMensajeExito("Palabra eliminada exitosamente");
+            } else {
+                mostrarMensajeError("Error al eliminar la palabra");
+            }
+        }
+    }
+
+    private void limpiarCamposGestor() {
+        txtPalabra.setText("");
+        txtPistas.setText("");
+    }
+
+    private void resetearModo() {
+        modoEdicion = false;
+        filaSeleccionada = -1;
+    }
+
+    // Métodos consolidados de ConfiguradorInterfazAdmin
+    private void mostrarMensajeError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private void mostrarMensajeExito(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private boolean confirmarAccion(String mensaje) {
+        int opcion = JOptionPane.showConfirmDialog(this, mensaje, "Confirmar", JOptionPane.YES_NO_OPTION);
+        return opcion == JOptionPane.YES_OPTION;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

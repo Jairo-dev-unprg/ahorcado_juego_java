@@ -3,13 +3,17 @@ package modelo;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 import java.util.ArrayList;
+import persistencia.GestorPalabrasXML;
 
 public class PalabrasTableModel extends AbstractTableModel {
     private List<Palabra> palabras;
     private final String[] columnNames = {"#", "Palabra", "Pista"};
+    private GestorPalabrasXML gestorPalabras;
     
     public PalabrasTableModel() {
+        this.gestorPalabras = new GestorPalabrasXML();
         this.palabras = new ArrayList<>();
+        cargarDatos();
     }
     
     public PalabrasTableModel(List<Palabra> palabras) {
@@ -69,7 +73,6 @@ public class PalabrasTableModel extends AbstractTableModel {
         }
     }
     
-
     public void setPalabras(List<Palabra> palabras) {
         this.palabras = palabras != null ? palabras : new ArrayList<>();
         fireTableDataChanged();
@@ -84,5 +87,14 @@ public class PalabrasTableModel extends AbstractTableModel {
 
     public List<Palabra> getPalabras() {
         return new ArrayList<>(palabras);
+    }
+    
+    public void cargarDatos() {
+        List<Palabra> palabrasCargadas = gestorPalabras.cargarPalabras();
+        setPalabras(palabrasCargadas);
+    }
+    
+    public void recargar() {
+        cargarDatos();
     }
 }

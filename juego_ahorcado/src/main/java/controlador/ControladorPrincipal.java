@@ -98,14 +98,12 @@ public class ControladorPrincipal {
     
             JFAdmin admin = new JFAdmin();
             admin.setControlador(this);
-            admin.inicializarComponentes();
             admin.setVisible(true);
             this.ventanaActual = admin;
         } else {
     
             JFPizarra pizarra = new JFPizarra();
             pizarra.setControlador(this);
-            pizarra.inicializarComponentes();
             pizarra.setVisible(true);
             this.ventanaActual = pizarra;
         }
@@ -149,5 +147,10 @@ public class ControladorPrincipal {
      */
     public boolean esAdministrador() {
         return usuarioActual != null && usuarioActual.isEsAdmin();
+    }
+    
+    public static void main(String[] args) {
+        ControladorPrincipal controlador = new ControladorPrincipal();
+        controlador.iniciarAplicacion();
     }
 }
