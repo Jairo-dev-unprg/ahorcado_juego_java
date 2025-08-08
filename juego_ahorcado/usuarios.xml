@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<usuarios>
+    <usuario>
+        <nombreUsuario>admin</nombreUsuario>
+        <contrasena>admin123</contrasena>
+        <esAdmin>true</esAdmin>
+    </usuario>
+    <usuario>
+        <nombreUsuario>usuario1</nombreUsuario>
+        <contrasena>pass123</contrasena>
+        <esAdmin>false</esAdmin>
+    </usuario>
+    <usuario>
+        <nombreUsuario>jairo</nombreUsuario>
+        <contrasena>1234</contrasena>
+        <esAdmin>false</esAdmin>
+    </usuario>
+    <usuario>
+        <nombreUsuario>renzo</nombreUsuario>
+        <contrasena>renzo</contrasena>
+        <esAdmin>false</esAdmin>
+    </usuario>
+    <usuario>
+        <nombreUsuario>pedro</nombreUsuario>
+        <contrasena>1234</contrasena>
+        <esAdmin>false</esAdmin>
+    </usuario>
+</usuarios>

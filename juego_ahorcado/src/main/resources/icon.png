@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Fondo transparente -->
+  <rect width="64" height="64" fill="none"/>
+  
+  <!-- Horca -->
+  <!-- Base horizontal -->
+  <rect x="8" y="58" width="20" height="3" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <!-- Poste vertical -->
+  <rect x="12" y="8" width="3" height="50" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <!-- Viga horizontal superior -->
+  <rect x="15" y="8" width="25" height="3" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <!-- Soporte diagonal -->
+  <line x1="15" y1="11" x2="25" y2="18" stroke="#8B4513" stroke-width="2"/>
+  <!-- Cuerda -->
+  <rect x="38" y="11" width="2" height="8" fill="#D2691E"/>
+  
+  <!-- Figura del ahorcado -->
+  <!-- Cabeza -->
+  <circle cx="39" cy="23" r="4" fill="none" stroke="#FFD700" stroke-width="2"/>
+  <!-- Ojos tristes -->
+  <circle cx="37" cy="22" r="0.5" fill="#FFD700"/>
+  <circle cx="41" cy="22" r="0.5" fill="#FFD700"/>
+  <!-- Boca triste -->
+  <path d="M 37 24 Q 39 26 41 24" stroke="#FFD700" stroke-width="1" fill="none"/>
+  
+  <!-- Cuerpo -->
+  <rect x="38" y="27" width="2" height="12" fill="#FFD700"/>
+  
+  <!-- Brazos -->
+  <line x1="39" y1="30" x2="33" y2="35" stroke="#FFD700" stroke-width="2"/>
+  <line x1="39" y1="30" x2="45" y2="35" stroke="#FFD700" stroke-width="2"/>
+  
+  <!-- Piernas -->
+  <line x1="39" y1="39" x2="33" y2="48" stroke="#FFD700" stroke-width="2"/>
+  <line x1="39" y1="39" x2="45" y2="48" stroke="#FFD700" stroke-width="2"/>
+</svg>

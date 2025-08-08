@@ -2,29 +2,33 @@
 package graficos.figuras;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import persistencia.GestorPalabrasXML;
+import modelo.Palabra;
 
 
 public class Palabras {
-    
+
    private List<String> listaPalabras;
+    private Map<String, String> pistas;
+    private GestorPalabrasXML gestorPalabras;
 
     public Palabras() {
         listaPalabras = new ArrayList<>();
-        cargarPalabras(); // Llena la lista al iniciar
+        pistas = new HashMap<>();
+        gestorPalabras = new GestorPalabrasXML();
+        cargarPalabras();
     }
 
     private void cargarPalabras() {
-        // Aquí puedes añadir las palabras que desees
-        listaPalabras.add("PROGRAMACION");
-        listaPalabras.add("JAVA");
-        listaPalabras.add("AHORCADO");
-        listaPalabras.add("COMPUTADORA");
-        listaPalabras.add("UNIVERSIDAD");
-        listaPalabras.add("SOFTWARE");
-        listaPalabras.add("CLASE");
-        listaPalabras.add("VARIABLE");
+        List<Palabra> palabrasXML = gestorPalabras.cargarPalabras();
+        for (Palabra palabra : palabrasXML) {
+            listaPalabras.add(palabra.getPalabra().toUpperCase());
+            pistas.put(palabra.getPalabra().toUpperCase(), palabra.getPista());
+        }
     }
 
     public String obtenerPalabraAleatoria() {
@@ -33,7 +37,12 @@ public class Palabras {
         return listaPalabras.get(indice);
     }
 
-    public String obtenerPista(String palabraSeleccionada) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   public String obtenerPista(String palabraSeleccionada) {
+        String pista = pistas.get(palabraSeleccionada);
+        if (pista != null) {
+            return pista;
+        } else {
+            return "No hay pista disponible para esta palabra.";
+        }
     }
 }

@@ -3,11 +3,11 @@ package logueo_registro;
 import controlador.ControladorPrincipal;
 import javax.swing.JOptionPane;
 
-public class JFLogueo extends javax.swing.JFrame {
+public class JFRegistro extends javax.swing.JFrame {
 
     private ControladorPrincipal controlador;
 
-    public JFLogueo() {
+    public JFRegistro() {
         initComponents();
     }
     
@@ -30,13 +30,14 @@ public class JFLogueo extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         txtUser = new javax.swing.JTextField();
+        txtPassConfirm = new javax.swing.JPasswordField();
         txtPass = new javax.swing.JPasswordField();
         btnRegistrar = new javax.swing.JButton();
-        btnEntrar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("HANGMAN - BIENVENIDO");
+        setTitle("HANGMAN - REGISTRO");
         setResizable(false);
 
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -47,6 +48,12 @@ public class JFLogueo extends javax.swing.JFrame {
         txtUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         background.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 300, 40));
 
+        txtPassConfirm.setBackground(new java.awt.Color(218, 182, 126));
+        txtPassConfirm.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        txtPassConfirm.setForeground(new java.awt.Color(51, 51, 51));
+        txtPassConfirm.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        background.add(txtPassConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 300, 40));
+
         txtPass.setBackground(new java.awt.Color(218, 182, 126));
         txtPass.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtPass.setForeground(new java.awt.Color(51, 51, 51));
@@ -54,9 +61,9 @@ public class JFLogueo extends javax.swing.JFrame {
         background.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 300, 40));
 
         btnRegistrar.setBackground(new java.awt.Color(218, 182, 126));
-        btnRegistrar.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
+        btnRegistrar.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(34, 33, 47));
-        btnRegistrar.setText("<html><div style='text-align: center;'>NUEVO<br>JUGADOR</div></html>");
+        btnRegistrar.setText("REGISTRAR");
         btnRegistrar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         btnRegistrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrar.setIconTextGap(0);
@@ -66,21 +73,21 @@ public class JFLogueo extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        background.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 140, 80));
+        background.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, 140, 50));
 
-        btnEntrar.setBackground(new java.awt.Color(172, 77, 45));
-        btnEntrar.setFont(new java.awt.Font("Arial Black", 1, 21)); // NOI18N
-        btnEntrar.setForeground(new java.awt.Color(233, 206, 161));
-        btnEntrar.setText("<html><div style='text-align: center;'>ENTRAR</div></html>");
-        btnEntrar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(172, 77, 45));
+        btnVolver.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(233, 206, 161));
+        btnVolver.setText("VOLVER");
+        btnVolver.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        background.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 130, 80));
+        background.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 130, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/register.png"))); // NOI18N
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -98,27 +105,14 @@ public class JFLogueo extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         if (controlador == null) {
             JOptionPane.showMessageDialog(this, "Error interno: Controlador no inicializado.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        String nombreUsuario = txtUser.getText().trim();
-        String contrasena = new String(txtPass.getPassword());
-        
-        String error = controlador.procesarLogin(nombreUsuario, contrasena);
-        
-        if (error != null) {
-            JOptionPane.showMessageDialog(this, error, "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
-            txtPass.setText("");
-            txtUser.requestFocus();
-        } else {
-            String tipoUsuario = controlador.esAdministrador() ? "Administrador" : "Usuario";
-            String nombreCompleto = controlador.getUsuarioActual().getNombreUsuario();
-            JOptionPane.showMessageDialog(this, "Bienvenido " + tipoUsuario + ": " + nombreCompleto, "Acceso Concedido", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_btnEntrarActionPerformed
+        controlador.volverAlLogin();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         if (controlador == null) {
@@ -126,7 +120,23 @@ public class JFLogueo extends javax.swing.JFrame {
             return;
         }
         
-        controlador.mostrarRegistro();
+        String nombreUsuario = txtUser.getText().trim();
+        String contrasena = new String(txtPass.getPassword());
+        String confirmarContrasena = new String(txtPassConfirm.getPassword());
+        
+        String error = controlador.procesarRegistro(nombreUsuario, contrasena, confirmarContrasena);
+        
+        if (error != null) {
+            JOptionPane.showMessageDialog(this, error, "Error de Registro", JOptionPane.ERROR_MESSAGE);
+            if (error.contains("contraseñas no coinciden")) {
+                txtPassConfirm.setText("");
+                txtPassConfirm.requestFocus();
+            } else if (error.contains("usuario ya existe")) {
+                txtUser.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
@@ -146,30 +156,32 @@ public class JFLogueo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFLogueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFLogueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFLogueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFLogueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFLogueo().setVisible(true);
+                new JFRegistro().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
-    private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField txtPass;
+    private javax.swing.JPasswordField txtPassConfirm;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

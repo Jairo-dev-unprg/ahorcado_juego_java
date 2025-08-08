@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<palabras>
+    <!-- PROGRAMACIÓN BÁSICA -->
+    <palabra>
+        <texto>JAVA</texto>
+        <pista>Lenguaje de programación orientado a objetos usado en este proyecto</pista>
+    </palabra>
+    <palabra>
+        <texto>PROGRAMACION</texto>
+        <pista>Arte de crear instrucciones para que las computadoras resuelvan problemas</pista>
+    </palabra>
+    <palabra>
+        <texto>ALGORITMO</texto>
+        <pista>Secuencia de pasos lógicos para resolver un problema</pista>
+    </palabra>
+    <palabra>
+        <texto>VARIABLE</texto>
+        <pista>Espacio en memoria para almacenar datos que pueden cambiar</pista>
+    </palabra>
+    <palabra>
+        <texto>FUNCION</texto>
+        <pista>Bloque de código reutilizable que realiza una tarea específica</pista>
+    </palabra>
+    <palabra>
+        <texto>METODO</texto>
+        <pista>Función que pertenece a una clase en programación orientada a objetos</pista>
+    </palabra>
+    <palabra>
+        <texto>CLASE</texto>
+        <pista>Plantilla para crear objetos con atributos y métodos</pista>
+    </palabra>
+    <palabra>
+        <texto>OBJETO</texto>
+        <pista>Instancia de una clase con datos y comportamientos específicos</pista>
+    </palabra>
+    <palabra>
+        <texto>HERENCIA</texto>
+        <pista>Mecanismo para crear nuevas clases basadas en clases existentes</pista>
+    </palabra>
+    <palabra>
+        <texto>POLIMORFISMO</texto>
+        <pista>Capacidad de objetos diferentes de responder al mismo mensaje</pista>
+    </palabra>
+    
+    <!-- ESTRUCTURAS DE DATOS -->
+    <palabra>
+        <texto>ARRAY</texto>
+        <pista>Estructura de datos que almacena elementos del mismo tipo</pista>
+    </palabra>
+    <palabra>
+        <texto>LISTA</texto>
+        <pista>Colección ordenada de elementos que puede crecer dinámicamente</pista>
+    </palabra>
+    <palabra>
+        <texto>MAPA</texto>
+        <pista>Estructura que asocia claves únicas con valores</pista>
+    </palabra>
+    <palabra>
+        <texto>CONJUNTO</texto>
+        <pista>Colección que no permite elementos duplicados</pista>
+    </palabra>
+    <palabra>
+        <texto>PILA</texto>
+        <pista>Estructura LIFO: último en entrar, primero en salir</pista>
+    </palabra>
+    <palabra>
+        <texto>COLA</texto>
+        <pista>Estructura FIFO: primero en entrar, primero en salir</pista>
+    </palabra>
+    
+    <!-- CONCEPTOS DE JAVA -->
+    <palabra>
+        <texto>SWING</texto>
+        <pista>Biblioteca de Java para crear interfaces gráficas de usuario</pista>
+    </palabra>
+    <palabra>
+        <texto>JFRAME</texto>
+        <pista>Ventana principal en aplicaciones Swing de Java</pista>
+    </palabra>
+    <palabra>
+        <texto>JPANEL</texto>
+        <pista>Contenedor ligero usado para organizar componentes en Swing</pista>
+    </palabra>
+    <palabra>
+        <texto>JBUTTON</texto>
+        <pista>Componente de botón clickeable en interfaces Swing</pista>
+    </palabra>
+    <palabra>
+        <texto>ACTIONLISTENER</texto>
+        <pista>Interface para manejar eventos de acción en Java</pista>
+    </palabra>
+    <palabra>
+        <texto>EXCEPTION</texto>
+        <pista>Evento que interrumpe el flujo normal de ejecución del programa</pista>
+    </palabra>
+    <palabra>
+        <texto>CONSTRUCTOR</texto>
+        <pista>Método especial que inicializa objetos cuando se crean</pista>
+    </palabra>
+    <palabra>
+        <texto>STATIC</texto>
+        <pista>Palabra clave que indica que un miembro pertenece a la clase</pista>
+    </palabra>
+    <palabra>
+        <texto>PRIVATE</texto>
+        <pista>Modificador de acceso que restringe la visibilidad a la misma clase</pista>
+    </palabra>
+    <palabra>
+        <texto>PUBLIC</texto>
+        <pista>Modificador de acceso que permite acceso desde cualquier lugar</pista>
+    </palabra>
+    
+    <!-- TECNOLOGÍAS Y HERRAMIENTAS -->
+    <palabra>
+        <texto>MAVEN</texto>
+        <pista>Herramienta de gestión de proyectos y dependencias en Java</pista>
+    </palabra>
+    <palabra>
+        <texto>XML</texto>
+        <pista>Lenguaje de marcado para almacenar y transportar datos</pista>
+    </palabra>
+    <palabra>
+        <texto>IDE</texto>
+        <pista>Entorno de desarrollo integrado para programar</pista>
+    </palabra>
+    <palabra>
+        <texto>NETBEANS</texto>
+        <pista>Entorno de desarrollo integrado popular para Java</pista>
+    </palabra>
+    <palabra>
+        <texto>ECLIPSE</texto>
+        <pista>IDE muy usado para desarrollo en Java y otros lenguajes</pista>
+    </palabra>
+    <palabra>
+        <texto>GIT</texto>
+        <pista>Sistema de control de versiones distribuido</pista>
+    </palabra>
+    <palabra>
+        <texto>GITHUB</texto>
+        <pista>Plataforma de alojamiento de código usando Git</pista>
+    </palabra>
+    <palabra>
+        <texto>COMPILADOR</texto>
+        <pista>Programa que traduce código fuente a código ejecutable</pista>
+    </palabra>
+    <palabra>
+        <texto>DEBUGGER</texto>
+        <pista>Herramienta para encontrar y corregir errores en el código</pista>
+    </palabra>
+    
+    <!-- CONCEPTOS DE COMPUTACIÓN -->
+    <palabra>
+        <texto>COMPUTADORA</texto>
+        <pista>Máquina electrónica que procesa datos e información</pista>
+    </palabra>
+    <palabra>
+        <texto>SOFTWARE</texto>
+        <pista>Conjunto de programas y aplicaciones de computadora</pista>
+    </palabra>
+    <palabra>
+        <texto>HARDWARE</texto>
+        <pista>Componentes físicos de una computadora</pista>
+    </palabra>
+    <palabra>
+        <texto>MEMORIA</texto>
+        <pista>Componente que almacena datos e instrucciones temporalmente</pista>
+    </palabra>
+    <palabra>
+        <texto>PROCESADOR</texto>
+        <pista>Unidad central que ejecuta las instrucciones del programa</pista>
+    </palabra>
+    <palabra>
+        <texto>SISTEMA</texto>
+        <pista>Conjunto de componentes que trabajan juntos</pista>
+    </palabra>
+    <palabra>
+        <texto>ARCHIVO</texto>
+        <pista>Unidad de almacenamiento de información en computadora</pista>
+    </palabra>
+    <palabra>
+        <texto>DIRECTORIO</texto>
+        <pista>Carpeta que organiza y contiene archivos</pista>
+    </palabra>
+    
+    <!-- DESARROLLO DE SOFTWARE -->
+    <palabra>
+        <texto>PROYECTO</texto>
+        <pista>Conjunto organizado de archivos y recursos de software</pista>
+    </palabra>
+    <palabra>
+        <texto>CODIGO</texto>
+        <pista>Instrucciones escritas en un lenguaje de programación</pista>
+    </palabra>
+    <palabra>
+        <texto>SINTAXIS</texto>
+        <pista>Reglas que definen cómo escribir código válido</pista>
+    </palabra>
+    <palabra>
+        <texto>SEMANTICA</texto>
+        <pista>Significado de las instrucciones en un programa</pista>
+    </palabra>
+    <palabra>
+        <texto>COMPILACION</texto>
+        <pista>Proceso de traducir código fuente a código ejecutable</pista>
+    </palabra>
+    <palabra>
+        <texto>EJECUCION</texto>
+        <pista>Proceso de correr un programa en la computadora</pista>
+    </palabra>
+    <palabra>
+        <texto>ERROR</texto>
+        <pista>Problema en el código que impide su funcionamiento correcto</pista>
+    </palabra>
+    <palabra>
+        <texto>BUG</texto>
+        <pista>Error o defecto en un programa de computadora</pista>
+    </palabra>
+    <palabra>
+        <texto>TESTING</texto>
+        <pista>Proceso de verificar que el software funciona correctamente</pista>
+    </palabra>
+    <palabra>
+        <texto>REFACTORING</texto>
+        <pista>Mejorar el código sin cambiar su funcionalidad</pista>
+    </palabra>
+    
+    <!-- INTERFACES Y DISEÑO -->
+    <palabra>
+        <texto>INTERFAZ</texto>
+        <pista>Punto de interacción entre el usuario y el programa</pista>
+    </palabra>
+    <palabra>
+        <texto>USUARIO</texto>
+        <pista>Persona que utiliza un programa o sistema</pista>
+    </palabra>
+    <palabra>
+        <texto>VENTANA</texto>
+        <pista>Área rectangular en la pantalla que contiene una aplicación</pista>
+    </palabra>
+    <palabra>
+        <texto>BOTON</texto>
+        <pista>Elemento clickeable que ejecuta una acción</pista>
+    </palabra>
+    <palabra>
+        <texto>MENU</texto>
+        <pista>Lista de opciones disponibles para el usuario</pista>
+    </palabra>
+    <palabra>
+        <texto>EVENTO</texto>
+        <pista>Acción del usuario que el programa puede detectar</pista>
+    </palabra>
+    <palabra>
+        <texto>CLICK</texto>
+        <pista>Acción de presionar y soltar un botón del mouse</pista>
+    </palabra>
+    <palabra>
+        <texto>TECLADO</texto>
+        <pista>Dispositivo de entrada para escribir texto</pista>
+    </palabra>
+    <palabra>
+        <texto>MOUSE</texto>
+        <pista>Dispositivo señalador para interactuar con la interfaz</pista>
+    </palabra>
+    
+    <!-- JUEGOS Y LÓGICA -->
+    <palabra>
+        <texto>AHORCADO</texto>
+        <pista>Juego de adivinanza de palabras letra por letra</pista>
+    </palabra>
+    <palabra>
+        <texto>JUEGO</texto>
+        <pista>Actividad recreativa con reglas y objetivos</pista>
+    </palabra>
+    <palabra>
+        <texto>JUGADOR</texto>
+        <pista>Persona que participa en un juego</pista>
+    </palabra>
+    <palabra>
+        <texto>PUNTUACION</texto>
+        <pista>Sistema numérico para medir el rendimiento en juegos</pista>
+    </palabra>
+    <palabra>
+        <texto>NIVEL</texto>
+        <pista>Grado de dificultad o progreso en un juego</pista>
+    </palabra>
+    <palabra>
+        <texto>VICTORIA</texto>
+        <pista>Resultado exitoso al completar un objetivo</pista>
+    </palabra>
+    <palabra>
+        <texto>DERROTA</texto>
+        <pista>Resultado cuando no se logra el objetivo</pista>
+    </palabra>
+    <palabra>
+        <texto>INTENTO</texto>
+        <pista>Cada oportunidad para resolver un problema</pista>
+    </palabra>
+    <palabra>
+        <texto>PISTA</texto>
+        <pista>Ayuda o sugerencia para resolver un problema</pista>
+    </palabra>
+    <palabra>
+        <texto>LETRA</texto>
+        <pista>Símbolo básico del alfabeto usado en palabras</pista>
+    </palabra>
+    
+    <!-- MATEMÁTICAS Y LÓGICA -->
+    <palabra>
+        <texto>MATEMATICAS</texto>
+        <pista>Ciencia que estudia números, formas y patrones</pista>
+    </palabra>
+    <palabra>
+        <texto>LOGICA</texto>
+        <pista>Ciencia del razonamiento válido y correcto</pista>
+    </palabra>
+    <palabra>
+        <texto>NUMERO</texto>
+        <pista>Símbolo matemático que representa una cantidad</pista>
+    </palabra>
+    <palabra>
+        <texto>OPERACION</texto>
+        <pista>Proceso matemático como suma, resta, multiplicación</pista>
+    </palabra>
+    <palabra>
+        <texto>RESULTADO</texto>
+        <pista>Valor obtenido después de realizar una operación</pista>
+    </palabra>
+    <palabra>
+        <texto>CONDICION</texto>
+        <pista>Expresión que puede ser verdadera o falsa</pista>
+    </palabra>
+    <palabra>
+        <texto>VERDADERO</texto>
+        <pista>Valor lógico que indica que algo es correcto</pista>
+    </palabra>
+    <palabra>
+        <texto>FALSO</texto>
+        <pista>Valor lógico que indica que algo es incorrecto</pista>
+    </palabra>
+    
+    <!-- EDUCACIÓN Y APRENDIZAJE -->
+    <palabra>
+        <texto>EDUCACION</texto>
+        <pista>Proceso de enseñanza y aprendizaje</pista>
+    </palabra>
+    <palabra>
+        <texto>APRENDIZAJE</texto>
+        <pista>Proceso de adquirir conocimientos y habilidades</pista>
+    </palabra>
+    <palabra>
+        <texto>ENSEÑANZA</texto>
+        <pista>Acto de transmitir conocimientos a otros</pista>
+    </palabra>
+    <palabra>
+        <texto>ESTUDIANTE</texto>
+        <pista>Persona que está aprendiendo en una institución educativa</pista>
+    </palabra>
+    <palabra>
+        <texto>PROFESOR</texto>
+        <pista>Persona que enseña y guía el aprendizaje</pista>
+    </palabra>
+    <palabra>
+        <texto>UNIVERSIDAD</texto>
+        <pista>Institución de educación superior</pista>
+    </palabra>
+    <palabra>
+        <texto>CURSO</texto>
+        <pista>Serie de lecciones sobre un tema específico</pista>
+    </palabra>
+    <palabra>
+        <texto>LECCION</texto>
+        <pista>Unidad de enseñanza sobre un tema particular</pista>
+    </palabra>
+    <palabra>
+        <texto>PRACTICA</texto>
+        <pista>Ejercicio repetido para mejorar habilidades</pista>
+    </palabra>
+    <palabra>
+        <texto>EJERCICIO</texto>
+        <pista>Actividad para aplicar y reforzar conocimientos</pista>
+    </palabra>
+    
+    <!-- INTERNET Y REDES -->
+    <palabra>
+        <texto>INTERNET</texto>
+        <pista>Red global de computadoras interconectadas</pista>
+    </palabra>
+    <palabra>
+        <texto>RED</texto>
+        <pista>Conjunto de computadoras conectadas entre sí</pista>
+    </palabra>
+    <palabra>
+        <texto>SERVIDOR</texto>
+        <pista>Computadora que proporciona servicios a otras computadoras</pista>
+    </palabra>
+    <palabra>
+        <texto>CLIENTE</texto>
+        <pista>Programa que solicita servicios a un servidor</pista>
+    </palabra>
+    <palabra>
+        <texto>NAVEGADOR</texto>
+        <pista>Programa para acceder y visualizar páginas web</pista>
+    </palabra>
+    <palabra>
+        <texto>PAGINA</texto>
+        <pista>Documento web que se puede visualizar en un navegador</pista>
+    </palabra>
+    <palabra>
+        <texto>ENLACE</texto>
+        <pista>Conexión que permite navegar entre páginas web</pista>
+    </palabra>
+    
+    <!-- BASES DE DATOS -->
+    <palabra>
+        <texto>BASEDEDATOS</texto>
+        <pista>Sistema organizado para almacenar y gestionar información</pista>
+    </palabra>
+    <palabra>
+        <texto>TABLA</texto>
+        <pista>Estructura que organiza datos en filas y columnas</pista>
+    </palabra>
+    <palabra>
+        <texto>REGISTRO</texto>
+        <pista>Fila en una tabla que contiene datos relacionados</pista>
+    </palabra>
+    <palabra>
+        <texto>CAMPO</texto>
+        <pista>Columna en una tabla que representa un tipo de dato</pista>
+    </palabra>
+    <palabra>
+        <texto>CONSULTA</texto>
+        <pista>Solicitud para obtener información específica de una base de datos</pista>
+    </palabra>
+    
+    <!-- SEGURIDAD -->
+    <palabra>
+        <texto>SEGURIDAD</texto>
+        <pista>Protección de sistemas y datos contra amenazas</pista>
+    </palabra>
+    <palabra>
+        <texto>CONTRASEÑA</texto>
+        <pista>Código secreto para acceder a un sistema</pista>
+    </palabra>
+    <palabra>
+        <texto>USUARIO</texto>
+        <pista>Persona autorizada para usar un sistema</pista>
+    </palabra>
+    <palabra>
+        <texto>ACCESO</texto>
+        <pista>Permiso para usar recursos de un sistema</pista>
+    </palabra>
+    <palabra>
+        <texto>AUTENTICACION</texto>
+        <pista>Proceso de verificar la identidad de un usuario</pista>
+    </palabra>
+    
+    <!-- CONCEPTOS AVANZADOS -->
+    <palabra>
+        <texto>RECURSION</texto>
+        <pista>Técnica donde una función se llama a sí misma</pista>
+    </palabra>
+    <palabra>
+        <texto>ITERACION</texto>
+        <pista>Repetición de un proceso hasta cumplir una condición</pista>
+    </palabra>
+    <palabra>
+        <texto>BUCLE</texto>
+        <pista>Estructura que repite código mientras se cumple una condición</pista>
+    </palabra>
+    <palabra>
+        <texto>CONDICIONAL</texto>
+        <pista>Estructura que ejecuta código según una condición</pista>
+    </palabra>
+    <palabra>
+        <texto>PARAMETRO</texto>
+        <pista>Variable que recibe valores en una función</pista>
+    </palabra>
+    <palabra>
+        <texto>ARGUMENTO</texto>
+        <pista>Valor pasado a una función cuando se llama</pista>
+    </palabra>
+    <palabra>
+        <texto>RETORNO</texto>
+        <pista>Valor que devuelve una función después de ejecutarse</pista>
+    </palabra>
+    
+    <!-- HERRAMIENTAS DE DESARROLLO -->
+    <palabra>
+        <texto>EDITOR</texto>
+        <pista>Programa para escribir y modificar código</pista>
+    </palabra>
+    <palabra>
+        <texto>TERMINAL</texto>
+        <pista>Interfaz de línea de comandos para interactuar con el sistema</pista>
+    </palabra>
+    <palabra>
+        <texto>COMANDO</texto>
+        <pista>Instrucción que se ejecuta en la terminal</pista>
+    </palabra>
+    <palabra>
+        <texto>SCRIPT</texto>
+        <pista>Archivo con comandos que se ejecutan automáticamente</pista>
+    </palabra>
+    <palabra>
+        <texto>LIBRERIA</texto>
+        <pista>Colección de código reutilizable para funciones específicas</pista>
+    </palabra>
+    <palabra>
+        <texto>FRAMEWORK</texto>
+        <pista>Estructura base para desarrollar aplicaciones</pista>
+    </palabra>
+    
+    <!-- CONCEPTOS FINALES -->
+    <palabra>
+        <texto>INNOVACION</texto>
+        <pista>Creación de nuevas ideas y soluciones tecnológicas</pista>
+    </palabra>
+    <palabra>
+        <texto>CREATIVIDAD</texto>
+        <pista>Capacidad de generar ideas originales y útiles</pista>
+    </palabra>
+    <palabra>
+        <texto>SOLUCION</texto>
+        <pista>Respuesta o método para resolver un problema</pista>
+    </palabra>
+    <palabra>
+        <texto>PROBLEMA</texto>
+        <pista>Situación que requiere una solución</pista>
+    </palabra>
+    <palabra>
+        <texto>DESAFIO</texto>
+        <pista>Tarea difícil que requiere esfuerzo y habilidad</pista>
+    </palabra>
+    <palabra>
+        <texto>OBJETIVO</texto>
+        <pista>Meta o propósito que se quiere alcanzar</pista>
+    </palabra>
+    <palabra>
+        <texto>EXITO</texto>
+        <pista>Logro satisfactorio de un objetivo propuesto</pista>
+    </palabra>
+    <palabra>
+        <texto>PROGRESO</texto>
+        <pista>Avance hacia el logro de un objetivo</pista>
+    </palabra>
+    <palabra>
+        <texto>MEJORA</texto>
+        <pista>Acción de hacer algo mejor de lo que era</pista>
+    </palabra>
+    <palabra>
+        <texto>OPTIMIZACION</texto>
+        <pista>Proceso de hacer algo lo más eficiente posible</pista>
+    </palabra>
+</palabras>

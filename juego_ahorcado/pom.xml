@@ -28,4 +28,5 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>com.mycompany.juego_ahorcado.Juego_ahorcado</exec.mainClass>
     </properties>
+    <name>PA_juego_ahorcado</name>
 </project>
